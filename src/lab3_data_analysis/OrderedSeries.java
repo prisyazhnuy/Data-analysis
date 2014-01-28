@@ -549,7 +549,7 @@ public class OrderedSeries {
         return countOfNumbers-count;
     }
     
-    public boolean odnorodnost2(DefaultTableModel model){
+    public Double getUniformityMed(DefaultTableModel model){
         int N1M = (int) model.getValueAt(0, 1);
         int N2M = (int) model.getValueAt(1, 1);
         int N1B = (int) model.getValueAt(0, 2);
@@ -559,9 +559,10 @@ public class OrderedSeries {
         int N1 = (int) model.getValueAt(0, 3);
         int N2 = (int) model.getValueAt(1, 3);
         int N = (int) model.getValueAt(2, 3);
-        double U = (Math.abs(N1M*N2B-N2M*N1B)-((double)N/(double)2))/(Math.pow(NM*NB*N1*N2, 0.5));
-        U=Math.abs(U*Math.pow(N, 0.5));
-        return U<=Distributions.NormInv(1-0.05/2.0,0,1);
+        long l = (long)NM*NB*N1*N2;
+        double U = (Math.abs((long)N1M*N2B-(long)N2M*N1B)-((double)N/(double)2))/(Math.pow((long)l, 0.5));
+        U=U*Math.pow(N, 0.5);
+        return U;
     }
     
     private double mediana(){
