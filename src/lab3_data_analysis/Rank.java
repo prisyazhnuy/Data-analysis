@@ -16,9 +16,28 @@ public class Rank {
             sort(row, 0, row.size()-1);
             result.add(Rank.getRank(row));
         }
-        
+        return result;  
+    }
+    
+    public static Boolean isUniformityFridman(ArrayList<ArrayList<Double>> list){
+        int N = list.size();
+        int k = list.get(0).size();
+        Double result;
+        Double R = 0.0;
+        for(int i=0; i<k; i++){
+            R+=Math.pow(getSumColRanks(list, i), 2);
+        }
+        Double tmp = (double)12/(double)(N*k*(k+1));
+        result = tmp*R-(3*N*(k+1));
+        return result<=Distributions.ChiSquared(1-0.05, k-1);
+    }
+    
+    public static Double getSumColRanks(ArrayList<ArrayList<Double>> list, int index){
+        Double result = 0.0;
+        for(ArrayList<Double> d : list){
+            result+=d.get(index);
+        }
         return result;
-        
     }
     
     public static ArrayList<Double> getRank(ArrayList<Double> arr){
