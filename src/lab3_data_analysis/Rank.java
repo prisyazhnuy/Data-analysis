@@ -7,12 +7,47 @@ public class Rank {
     public static ArrayList<ArrayList<Double>> countRanks(ArrayList<Vector<Double>> arr){
         int n = arr.get(0).size(); //count of elements in the series
         ArrayList<Double> row;
-        for(Vector<Double> vec : arr){
+        for(int i=0; i<n; i++){
+            row=new ArrayList<>();
+            for(Vector<Double> vec : arr){
+                row.add(vec.get(i));
+            }
+            sort(row, 0, row.size()-1);
             
         }
         
         return null;
         
+    }
+    
+    public static ArrayList<Double> getRank(ArrayList<Double> arr){
+        ArrayList<Double> row = new ArrayList<>();
+        int t;
+        int sum = 0;
+        for(int j=0; j<arr.size(); j++){
+            t=j+1;
+            if(t==arr.size()){
+                row.add((double)t);
+            }else
+            if(arr.get(j).equals(arr.get(t))){
+                while(arr.get(j).equals(arr.get(t))){
+                    sum+=t;
+                    t++;
+                    if(t==arr.size()){
+                        break;
+                    }
+                }
+                sum+=t;
+                int subtract = t-j;
+                j=t-1;
+                for(int i=0; i<subtract; i++){
+                    row.add((double)sum/(double)subtract);
+                }
+            }else{
+                row.add((double)t);
+            }
+        }
+        return row;
     }
     
     public static void sort(ArrayList<Double> list, int start, int end) {
