@@ -46,8 +46,11 @@ public class Frame extends javax.swing.JFrame {
         jTblFridman = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTblStatistic = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        jSldrFridman = new javax.swing.JSlider();
+        jTFSliderFridman = new javax.swing.JTextField();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTAFridman = new javax.swing.JTextArea();
+        jBtnFridman = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,8 +179,8 @@ public class Frame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jTFSliderMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jSldrMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Медианный критерий", jPanel1);
@@ -202,14 +205,29 @@ public class Frame extends javax.swing.JFrame {
         jTblStatistic.setModel(modelStatistic);
         jScrollPane6.setViewportView(jTblStatistic);
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jSldrFridman.setMajorTickSpacing(10);
+        jSldrFridman.setMinorTickSpacing(5);
+        jSldrFridman.setPaintLabels(true);
+        jSldrFridman.setPaintTicks(true);
+        jSldrFridman.setValue(5);
+        jSldrFridman.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jSldrFridmanMouseDragged(evt);
             }
         });
 
-        jTextField2.setText("jTextField2");
+        jTFSliderFridman.setText("0.05");
+
+        jTAFridman.setColumns(20);
+        jTAFridman.setRows(5);
+        jScrollPane9.setViewportView(jTAFridman);
+
+        jBtnFridman.setText("Проверить");
+        jBtnFridman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnFridmanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -221,13 +239,16 @@ public class Frame extends javax.swing.JFrame {
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                     .addComponent(jScrollPane6)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBtnOpenFileFridman)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jBtnOpenFileFridman)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jSldrFridman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFSliderFridman)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBtnFridman, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -235,15 +256,23 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jBtnOpenFileFridman)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSldrFridman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jTFSliderFridman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(388, 388, 388)
+                        .addComponent(jBtnFridman, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Критерий Фридмана", jPanel2);
@@ -256,7 +285,9 @@ public class Frame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -276,11 +307,6 @@ public class Frame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "File has wrong information");
         }
     }//GEN-LAST:event_jBtnOpenFileFridmanActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ArrayList<ArrayList<Double>> ranks = Rank.countRanks(arrayOfX);
-        jTextField2.setText(""+Rank.isUniformityFridman(ranks));
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jBtnUniformityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnUniformityActionPerformed
         double U = first.getUniformityMed(modelThird);
@@ -345,6 +371,24 @@ public class Frame extends javax.swing.JFrame {
         jTFSliderMed.setText(""+jSldrMed.getValue()/(double)100);
     }//GEN-LAST:event_jSldrMedMouseDragged
 
+    private void jSldrFridmanMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSldrFridmanMouseDragged
+        jTFSliderFridman.setText(""+jSldrFridman.getValue()/(double)100);
+    }//GEN-LAST:event_jSldrFridmanMouseDragged
+
+    private void jBtnFridmanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFridmanActionPerformed
+        ArrayList<ArrayList<Double>> ranks = Rank.countRanks(arrayOfX);
+        double X = Rank.getUniformityFridman(ranks);
+        double Kv = Distributions.ChiSquared(1-Double.parseDouble(jTFSliderFridman.getText()), ranks.get(0).size()-1);
+        String text = "X^2="+X+"\n";
+        text+="Квантиль="+Kv+"\n";
+        if(X<=Kv){
+            text+="Принимается";
+        }else{
+            text+="Не принимается";
+        }
+        jTAFridman.setText(text);
+    }//GEN-LAST:event_jBtnFridmanActionPerformed
+
     public static void start() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -371,11 +415,11 @@ public class Frame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnFridman;
     private javax.swing.JButton jBtnOpenFile1;
     private javax.swing.JButton jBtnOpenFile2;
     private javax.swing.JButton jBtnOpenFileFridman;
     private javax.swing.JButton jBtnUniformity;
-    private javax.swing.JButton jButton2;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JFileChooser jFileChooser2;
     private javax.swing.JFileChooser jFileChooser3;
@@ -389,8 +433,12 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSlider jSldrFridman;
     private javax.swing.JSlider jSldrMed;
+    private javax.swing.JTextArea jTAFridman;
     private javax.swing.JTextArea jTAMed;
+    private javax.swing.JTextField jTFSliderFridman;
     private javax.swing.JTextField jTFSliderMed;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
@@ -400,7 +448,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JTable jTblStatistic;
     private javax.swing.JTable jTblStatisticMed;
     private javax.swing.JTable jTblThird;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 private OrderedSeries first = null;
 private OrderedSeries second = null;
@@ -412,5 +459,18 @@ private DefaultTableModel modelThird;
 private DefaultTableModel modelFridman;
 private DefaultTableModel modelStatistic;
 private DefaultTableModel modelStatisticMed;
-private ArrayList<Vector<Double>> arrayOfX = new ArrayList<>();
+private ArrayList<Vector<Struct>> arrayOfX = new ArrayList<>();
+}
+
+class Struct{
+    Struct(){};
+    Struct(double number, int position){
+        this.number=number;
+        this.position=position;
+    }
+    public String toString(){
+        return ""+number;
+    }
+    double number;
+    int position;
 }
