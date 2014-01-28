@@ -22,7 +22,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 public class OrderedSeries {
     
     ArrayList<Count> data = new ArrayList<>();
-    Vector<Double> array = new Vector<>();
+    Vector<Struct> array = new Vector<>();
     int countOfNumbers = 0;
     static final int countCol=10;
     static final int countRow=5;
@@ -189,7 +189,7 @@ public class OrderedSeries {
         return mean()+Math.pow(result, 0.5);
     }
     
-    public Vector<Double> getArray(){
+    public Vector<Struct> getArray(){
         return array;
     }
 
@@ -202,7 +202,9 @@ public class OrderedSeries {
             tmp=buffile.readLine();
             String[] str = tmp.split("\\s+");
             for(int i=0; i<str.length; i++){
-                array.add(Double.parseDouble(str[i]));
+                Struct stc = new Struct();
+                stc.number=Double.parseDouble(str[i]);
+                array.add(stc);
                 for(int j=0; j<=data.size(); j++){
                     if(j==data.size()){
                         data.add(new Count(Float.parseFloat(str[i])));
