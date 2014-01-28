@@ -3,6 +3,7 @@ package lab3_data_analysis;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartPanel;
@@ -257,7 +258,7 @@ public class Frame extends javax.swing.JFrame {
         try {
             series.loadFromFile(jFileChooser3.getSelectedFile().getPath());
             series.showArray(modelFridman);
-            arrayOfOrdered.add(series);
+            arrayOfX.add(series.getArray());
             series.showStatistics(modelStatistic);
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "File not found");
@@ -325,5 +326,5 @@ private DefaultTableModel modelSecond;
 private DefaultTableModel modelThird;
 private DefaultTableModel modelFridman;
 private DefaultTableModel modelStatistic;
-private ArrayList<OrderedSeries> arrayOfOrdered = new ArrayList<>();
+private ArrayList<Vector<Double>> arrayOfX = new ArrayList<>();
 }

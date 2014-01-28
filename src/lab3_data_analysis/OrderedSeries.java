@@ -124,7 +124,7 @@ public class OrderedSeries {
         return result;
     }
     
-     public JFreeChart createStatFunkDensity(float a, float b){
+    public JFreeChart createStatFunkDensity(float a, float b){
         XYSeriesCollection dataset = new XYSeriesCollection();
         int t=0;
          XYSeries tmp = new XYSeries("1");
@@ -153,7 +153,7 @@ public class OrderedSeries {
         return chart;
     }
      
-      public JFreeChart createStatFunkDestrib(float a, float b){
+    public JFreeChart createStatFunkDestrib(float a, float b){
         XYSeriesCollection dataset = new XYSeriesCollection();
          XYSeries tmp = new XYSeries("1");
         for(Count c : data){
@@ -187,6 +187,10 @@ public class OrderedSeries {
     public double markB(){
         double result = 3*(meanSq()-Math.pow(mean(), 2));
         return mean()+Math.pow(result, 0.5);
+    }
+    
+    public Vector<Double> getArray(){
+        return array;
     }
 
     public void loadFromFile(String path) throws FileNotFoundException, IOException {
