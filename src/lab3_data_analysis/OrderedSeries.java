@@ -684,10 +684,10 @@ public class OrderedSeries {
         data.clear();
     }
 
-    DefaultTableModel getMedians(DefaultTableModel modelThird, int index) {
+    DefaultTableModel getMedians(DefaultTableModel modelThird, int index, OrderedSeries third) {
         if(index==1){
-            modelThird.setValueAt(less(mediana()), 0, 1);
-            modelThird.setValueAt(more(mediana()), 0, 2);
+            modelThird.setValueAt(less(third.mediana()), 0, 1);
+            modelThird.setValueAt(more(third.mediana()), 0, 2);
             modelThird.setValueAt(countOfNumbers, 0, 3);
             if(!modelThird.getValueAt(1, 1).equals("")){
                 int m=(int) modelThird.getValueAt(0, 1)+(int) modelThird.getValueAt(1, 1);
@@ -699,8 +699,8 @@ public class OrderedSeries {
             }
         }
         else{
-            modelThird.setValueAt(less(mediana()), 1, 1);
-            modelThird.setValueAt(more(mediana()), 1, 2);
+            modelThird.setValueAt(less(third.mediana()), 1, 1);
+            modelThird.setValueAt(more(third.mediana()), 1, 2);
             modelThird.setValueAt(countOfNumbers, 1, 3);
             if(!modelThird.getValueAt(0, 1).equals("")){
                 int m=(int) modelThird.getValueAt(0, 1)+(int) modelThird.getValueAt(1, 1);
