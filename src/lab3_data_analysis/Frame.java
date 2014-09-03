@@ -335,7 +335,7 @@ public class Frame extends javax.swing.JFrame {
             }
             second.showOrderedSeries(modelSecond);
             second.showStatistics(modelStatisticMed);
-            modelThird=second.getMedians(modelThird, 2);
+            modelThird=second.getMedians(modelThird, 2, third);
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "File not found");
         } catch (IOException ex) {
@@ -358,7 +358,7 @@ public class Frame extends javax.swing.JFrame {
             }
             first.showOrderedSeries(modelFirst);
             first.showStatistics(modelStatisticMed);
-            modelThird=first.getMedians(modelThird, 1);
+            modelThird=first.getMedians(modelThird, 1, third);
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "File not found");
         } catch (IOException ex) {
